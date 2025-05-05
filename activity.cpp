@@ -75,8 +75,8 @@ int main() {
 
     double finalAmount = r1.applyDiscount(amount);
     discount = amount - finalAmount; 
-    cout <<"Discount:"<< discount<<endl;
-    cout << "Total: " << finalAmount << endl;
+    cout <<"Discount: "<< discount<<" pesos"<<endl;
+    cout << "Total: "<< finalAmount<<" pesos"<< endl;
 
     return 0;
 }
