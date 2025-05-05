@@ -28,11 +28,11 @@ public:
     }
 };
 
-class Cart {
+class real {
 private:
     Discount* tempdiscount;
 public:
-    Cart() : tempdiscount(nullptr) {}
+    real() : tempdiscount(nullptr) {}
 
     void setDiscount(Discount* discountStrategy) {
         tempdiscount = discountStrategy;
@@ -42,14 +42,14 @@ public:
         return tempdiscount ? tempdiscount->amount(amount) : amount; 
     }
 
-    ~Cart() {
+    ~real() {
         delete tempdiscount;
     }
 };
 
 int main() {
-    Cart cart;
-    double amount, realamount;
+    real r1;
+    double amount, discount;
     int choice;
 
     cout << "Enter amount: ";
@@ -60,22 +60,23 @@ int main() {
 
     switch (choice) {
         case 1:
-            cart.setDiscount(new NoDiscount());
+            r1.setDiscount(new NoDiscount());
             break;
         case 2:
-            cart.setDiscount(new sampuDiscount());
+            r1.setDiscount(new sampuDiscount());
             break;
         case 3:
-            cart.setDiscount(new benteDiscount());
+            r1.setDiscount(new benteDiscount());
             break;
         default:
             cout << "wrong input, terminating code" << endl;
             return 0;
     }
 
-    double finalAmount = cart.applyDiscount(amount);
-    
-    cout << "Final price after discount: " << finalAmount << endl;
+    double finalAmount = r1.applyDiscount(amount);
+    discount = amount - finalAmount; 
+    cout <<"Discount:"<< discount<<endl;
+    cout << "Total: " << finalAmount << endl;
 
     return 0;
 }
